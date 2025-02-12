@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,900&display=swap');
+/* Base styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Gallery container */
+.gallery {
+  --d: 10s; /* duration */
+  display: grid;
+  place-items: center;
+  width: 220px;
+  margin: 0 auto; /* Center the gallery instead of fixed margin */
+  padding: 0 20px; /* Add padding for smaller screens */
+  box-sizing: border-box;
+}
+
+/* Gallery images */
+.gallery > img {
+  grid-area: 1/1;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 10px solid #f2f2f2;
+  box-shadow: 0 0 4px #0007;
+  z-index: 2;
+  animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
+}
+
+/* Individual image animations */
+.gallery img:last-child {
+  animation-name: slide, z-order-last;
+}
+
+.gallery > img:nth-child(1) { animation-delay: calc(0*var(--d));    --r: 16deg; }
+.gallery > img:nth-child(2) { animation-delay: calc(-0.2*var(--d)); --r: -1deg; }
+.gallery > img:nth-child(3) { animation-delay: calc(-0.4*var(--d)); --r: -19deg; }
+.gallery > img:nth-child(4) { animation-delay: calc(-0.6*var(--d)); --r: 6deg; }
+.gallery > img:nth-child(5) { animation-delay: calc(-0.8*var(--d)); --r: -8deg; }
+
+/* Headline container */
+#hedlinecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  padding: 0 15px; /* Add padding for smaller screens */
+}
+
+/* Shine effect text */
+#shine {
+  font-size: clamp(22px, 5vw, 60px); /* Responsive font size */
+  font-weight: bold;
+  color: rgba(255, 0, 234, 0.419);
+  z-index: 10;
+  background: -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+  -webkit-background-size: 150px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-name: shine;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  text-shadow: 0 0px 0px rgba(233, 85, 189, 0.419);
+}
+
+/* Button styles */
+.button {
+  font-size: clamp(1rem, 2vw, 2rem); /* Responsive font size */
+  box-shadow: 0px 0px 10px;
+  border-radius: 90px;
+  background-color: rgb(250, 13, 250);
+  padding: 0.5em 1em; /* Use relative units */
+  text-align: center;
+  position: relative;
+  top: 60px;
+  color: #fff;
+  width: min(200px, 80%); /* Responsive width */
+  margin: 0 auto; /* Center the button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins',cursive;
+}
+
+.button a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #111;
+}
+
+/* Animations */
+@keyframes slide {
+  10% {
+    transform: translateX(120%) rotate(var(--r));
+  }
+  0%, 100%, 20% {
+    transform: translateX(0%) rotate(var(--r));
+  }
+}
+
+@keyframes z-order {
+  10%, 20% { z-index: 1; }
+  80% { z-index: 2; }
+}
+
+@keyframes z-order-last {
+  10%, 20% { z-index: 1; }
+  90% { z-index: 2; }
+}
+
+@-webkit-keyframes shine {
+  0%, 10% { background-position: -1000px; }
+  20% { background-position: top left; }
+  90% { background-position: top right; }
+  100% { background-position: 1000px; }
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  .gallery {
+    width: min(220px, 90vw); /* Responsive gallery width */
+    margin: 0 auto;
+  }
+  
+  #hedlinecontainer {
+    margin-bottom: 40px;
+  }
+  
+  .button {
+    top: 40px;
+  }
+}
+
+/* Small screens */
+@media only screen and (max-width: 480px) {
+  .gallery > img {
+    border-width: 5px; /* Smaller border for mobile */
+  }
+  
+  #hedlinecontainer {
+    margin-bottom: 30px;
+  }
+  
+  .button {
+    top: 30px;
+  }
+}
+.button:hover{
+  box-shadow: 0px 0px 30px rgb(250, 12, 246);
+}
+
+.bg_heart {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  top: -50%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -m-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.heart:before {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+}
+.heart:after {
+  position: absolute;
+  top: 0;
+  right: -50%;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 100%;
+}
+
+@-webkit-keyframes love {
+  0% {
+    top: 110%;
+  }
+}
+@-moz-keyframes love {
+  0% {
+    top: 110%;
+  }
+}
+@-ms-keyframes love {
+  0% {
+    top: 110%;
+  }
+}
+@keyframes love {
+  0% {
+    top: 110%;
+  }
+}
